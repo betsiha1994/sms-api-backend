@@ -1,17 +1,17 @@
 function validateContact(data) {
-  const errors = {};
+  const errors = [];
 
   if (!data.name || typeof data.name !== 'string') {
-    errors.name = 'Name is required and must be a string';
+    errors.push('Name is required and must be a string');
   }
 
   const phoneRegex = /^09\d{8}$/; 
   if (!data.phoneNumber || !phoneRegex.test(data.phoneNumber)) {
-    errors.phoneNumber = 'Invalid phone number format';
+    errors.push('Invalid phone number format');
   }
 
   return {
-    isValid: Object.keys(errors).length === 0,
+    isValid: errors.length === 0,
     errors,
   };
 }
@@ -53,26 +53,26 @@ function validateLogin(data) {
 }
 
 function validateSMS(data) {
-  const errors = {};
+  const errors = [];
 
   
   const phoneRegex = /^09\d{8}$/;
 
   if (!data.phoneNumber || !phoneRegex.test(data.phoneNumber)) {
-    errors.phoneNumber = 'Phone number must be in 09xxxxxxxx format';
+    errors.push('Phone number must be in 09xxxxxxxx format');
   }
 
   if (!data.message || typeof data.message !== 'string' || data.message.trim() === '') {
-    errors.message = 'Message is required and must be a non-empty string';
+    errors.push('Message is required and must be a non-empty string');
   }
 
  
   if (data.message && data.message.length > 160) {
-    errors.message = 'Message must not exceed 160 characters';
+    errors.push('Message must not exceed 160 characters');
   }
 
   return {
-    isValid: Object.keys(errors).length === 0,
+    isValid:errors.length === 0,
     errors,
   };
 }
