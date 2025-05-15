@@ -9,7 +9,8 @@ router.post('/register',  (req, res) => {
   if (errors.length > 0) {
     return res.status(400).json({ errors });
   }
-    userController.registerUser});
+ return userController.registerUser(req,res);
+});
 router.post('/login', (req,res)=>{
     const errors = validateLogin(req.body);
     if(errors.length>0){
@@ -23,7 +24,8 @@ router.put('/:id',  (req, res) => {
   if (errors.length > 0) {
     return res.status(400).json({ errors });
   }
-    userController.updateUser});
+ return userController.updateUser(req,res);
+});
 router.delete('/:id', userController.deleteUser);
 
 module.exports = router;

@@ -13,7 +13,8 @@ router.post('/send',(req,res)=>{
     if (errors.length >0){
         return res.status(400).json({errors});
     }
-     smsController.sendSMS});
+    return smsController.sendSMS(req,res);
+});
 
 // GET /api/sms/history
 router.get('/history', smsController.getHistory);
@@ -23,7 +24,8 @@ router.put('/history/:id', (req,res)=>{
     if (errors.length >0){
         return res.status(400).json({errors});
     }
-        smsController.updateHistory});
+      return smsController.updateHistory(req,res);
+    });
 
 
 module.exports = router;

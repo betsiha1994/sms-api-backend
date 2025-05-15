@@ -8,7 +8,8 @@ router.post("/", (req,res)=>{
     if (errors.length >0){
         return res.status(400).json({errors});
     }
-    contactController.createContact});
+    return contactController.createContact(req,res);
+});
 router.get("/", contactController.getAllContacts);
 router.get("/:id", contactController.getContact);
 
@@ -18,7 +19,8 @@ router.put("/:id",(req,res)=>{
     if (errors.length >0){
         return res.status(400).json({errors});
     }
-     contactController.updateContact});
+     return contactController.updateContact(req,res);
+    });
 router.delete("/:id", contactController.deleteContact);
 
 module.exports = router;
