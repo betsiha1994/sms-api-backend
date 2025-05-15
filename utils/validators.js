@@ -5,7 +5,7 @@ function validateContact(data) {
     errors.name = 'Name is required and must be a string';
   }
 
-  const phoneRegex = /^09\d{8}$/; // Ethiopian mobile number format
+  const phoneRegex = /^09\d{8}$/; 
   if (!data.phoneNumber || !phoneRegex.test(data.phoneNumber)) {
     errors.phoneNumber = 'Invalid phone number format';
   }
@@ -55,7 +55,7 @@ function validateLogin(data) {
 function validateSMS(data) {
   const errors = {};
 
-  // Phone number must be in Ethiopian format: 09xxxxxxxx
+  
   const phoneRegex = /^09\d{8}$/;
 
   if (!data.phoneNumber || !phoneRegex.test(data.phoneNumber)) {
@@ -66,7 +66,7 @@ function validateSMS(data) {
     errors.message = 'Message is required and must be a non-empty string';
   }
 
-  // Optional: Check max message length (e.g., 160 characters for SMS)
+ 
   if (data.message && data.message.length > 160) {
     errors.message = 'Message must not exceed 160 characters';
   }
